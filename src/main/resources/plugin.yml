@@ -1,0 +1,3 @@
+name: zeusallmighty11-t1
+main: com.tenjava.entries.zeusallmighty11.t1.TenJava
+version: '${project.version}'
