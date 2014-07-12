@@ -4,6 +4,7 @@ package com.tenjava.entries.zeusallmighty11.t1.rails;
 import com.tenjava.entries.zeusallmighty11.t1.FancyTransit;
 import com.tenjava.entries.zeusallmighty11.t1.util.BlockUtil;
 import com.tenjava.entries.zeusallmighty11.t1.util.Messenger;
+import com.tenjava.entries.zeusallmighty11.t1.util.MinecartUtil;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
