@@ -12,6 +12,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.vehicle.VehicleMoveEvent;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 
 public class RailListener implements Listener
@@ -69,12 +71,32 @@ public class RailListener implements Listener
             }
             else if (to.getType() == Material.WATER || to.getType() == Material.STATIONARY_WATER)
             {
-                Entity passenger = minecart.getPassenger();
-                minecart.remove();
+                if (plugin.isMinecartBoats())
+                {
+                    Vector v = minecart.getVelocity();
+                    Entity passenger = minecart.getPassenger();
+                    minecart.remove();
 
-                Boat boat = (Boat) to.getLocation().getWorld().spawnEntity(to.getLocation(), EntityType.BOAT);
-                boat.setPassenger(passenger);
-                boat.setMetadata("minecart", new FixedMetadataValue(plugin, "minecart"));
+                    final Boat boat = (Boat) to.getLocation().getWorld().spawnEntity(to.getLocation(), EntityType.BOAT);
+                    boat.setPassenger(passenger);
+                    boat.setMetadata("minecart", new FixedMetadataValue(plugin, "minecart"));
+                    boat.setMetadata("invincible", new FixedMetadataValue(plugin, "invincible"));
+                    boat.setVelocity(v);
+
+
+
+                    new BukkitRunnable()
+                    {
+
+
+                        @Override
+                        public void run()
+                        {
+                            boat.removeMetadata("invincible", plugin);
+                        }
+                    }.runTaskLater(plugin, 20L);
+
+                }
             }
 
         }

@@ -1,10 +1,7 @@
 package com.tenjava.entries.zeusallmighty11.t1;
 
 
-import com.tenjava.entries.zeusallmighty11.t1.listeners.RailListener;
-import com.tenjava.entries.zeusallmighty11.t1.listeners.SignCreateListener;
-import com.tenjava.entries.zeusallmighty11.t1.listeners.TeleportListener;
-import com.tenjava.entries.zeusallmighty11.t1.listeners.TestListener;
+import com.tenjava.entries.zeusallmighty11.t1.listeners.*;
 import com.tenjava.entries.zeusallmighty11.t1.rails.RailSign;
 import com.tenjava.entries.zeusallmighty11.t1.safety.SafeLocation;
 import com.tenjava.entries.zeusallmighty11.t1.tasks.RailCooldownTask;
@@ -37,7 +34,9 @@ public class FancyTransit extends JavaPlugin
 
     // config stuff
     boolean minecartBoats;
-    
+    boolean minecartBoatDrops;
+
+
 
     // ----------------------------------------------------------------------------------------- \\
 
@@ -74,6 +73,7 @@ public class FancyTransit extends JavaPlugin
         pm.registerEvents(new TeleportListener(this), this);
         pm.registerEvents(new SignCreateListener(this), this);
         pm.registerEvents(new RailListener(this), this);
+        pm.registerEvents(new BoatListener(this), this);
 
 
         // temporary testing listener
@@ -117,7 +117,8 @@ public class FancyTransit extends JavaPlugin
      */
     private void loadConfig()
     {
-
+        minecartBoats = getConfig().getBoolean("minecart-transform");
+        minecartBoatDrops = getConfig().getBoolean("transformed-drops-minecart");
     }
 
 
@@ -202,6 +203,46 @@ public class FancyTransit extends JavaPlugin
     {
         return minecartCooldowns;
     }
+
+
+
+
+    public RailCooldownTask getRailCooldownTask()
+    {
+        return railCooldownTask;
+    }
+
+
+
+
+    public File getSignsDir()
+    {
+        return signsDir;
+    }
+
+
+
+
+    /**
+     * @return if minecarts should turn into boats
+     */
+    public boolean isMinecartBoats()
+    {
+        return minecartBoats;
+    }
+
+
+
+
+    /**
+     * @return should *boats drop minecarts?
+     */
+    public boolean isMinecartBoatDrops()
+    {
+        return minecartBoatDrops;
+    }
+
+
 
     // ----------------------------------------------------------------------------------------- \\
 }

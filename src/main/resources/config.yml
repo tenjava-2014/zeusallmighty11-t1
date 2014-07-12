@@ -1,2 +1,5 @@
 # Should minecarts turn into a boat when landing in water?
-minecart-boat: true
+minecart-transform: true
+
+# Should minecarts that turned into boats drop minecarts?
+transformed-drops-minecart: true
