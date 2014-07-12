@@ -71,7 +71,7 @@ public class RailManager
      * Performs the
      *
      * @param cart Minecart to peform on
-     * @param rs RailSign to take data from
+     * @param rs   RailSign to take data from
      */
     public static void perform(Minecart cart, RailSign rs)
     {
@@ -86,7 +86,7 @@ public class RailManager
             break;
             case HOVER:
             {
-                MinecartUtil.doHover(cart, rs.getPower());
+                MinecartUtil.hover(cart, rs.getPower(), rs.isConnect());
             }
             break;
         }

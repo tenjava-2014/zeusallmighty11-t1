@@ -97,13 +97,4 @@ public class MinecartUtil
             }
         }.runTaskLater(FancyTransit.getInstance(), 4L);
     }
-
-
-
-
-    public static void doHover(Minecart cart, float power)
-    {
-
-
-    }
 }
