@@ -6,6 +6,7 @@ import com.tenjava.entries.zeusallmighty11.t1.rails.RailSign;
 import com.tenjava.entries.zeusallmighty11.t1.safety.SafeLocation;
 import com.tenjava.entries.zeusallmighty11.t1.tasks.RailCooldownTask;
 import com.tenjava.entries.zeusallmighty11.t1.temp.CooldownCart;
+import com.tenjava.entries.zeusallmighty11.t1.util.ItemUtil;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -95,7 +96,12 @@ public class FancyTransit extends JavaPlugin
         // if obsidian boats enabled, create recipe
         if (obsidianBoatsExist)
         {
-            ShapedRecipe recipe = new ShapedRecipe(new ItemStack(Material.BOAT));
+            ShapedRecipe recipe = new ShapedRecipe(ItemUtil.withName(new ItemStack(Material.BOAT), "&5Obsidian Boat"));
+
+            recipe.shape("   ", "O O", "OOO");
+            recipe.setIngredient('O', Material.OBSIDIAN);
+
+            getServer().addRecipe(recipe);
         }
 
     }
