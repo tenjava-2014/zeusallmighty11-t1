@@ -1,6 +1,7 @@
 package com.tenjava.entries.zeusallmighty11.t1.rails;
 
 
+import com.tenjava.entries.zeusallmighty11.t1.FancyTransit;
 import com.tenjava.entries.zeusallmighty11.t1.safety.SafeLocation;
 import org.bukkit.Location;
 
@@ -11,6 +12,8 @@ public class RailSign implements Serializable
 {
     // ----------------------------------------------------------------------------------------- \\
 
+    public static final long serialVersionUID = 128192371521242L;
+    
     RailSignType type;
     float power;
     boolean connect;
@@ -70,6 +73,24 @@ public class RailSign implements Serializable
         }
         return rs;
     }
+
+
+
+
+    public static RailSign fromLocation(Location loc)
+    {
+        for (RailSign rs : FancyTransit.getInstance().getRailSigns().values())
+        {
+            SafeLocation sl = rs.getRailLoc();
+
+            if (sl.getX() == loc.getX() && sl.getY() == loc.getY() && sl.getZ() == loc.getZ())
+            {
+                return rs;
+            }
+        }
+        return null;
+    }
+
 
 
 
@@ -164,6 +185,7 @@ public class RailSign implements Serializable
     {
         return railLoc;
     }
+
 
 
 

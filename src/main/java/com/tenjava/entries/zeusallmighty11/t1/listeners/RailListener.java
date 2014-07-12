@@ -2,8 +2,8 @@ package com.tenjava.entries.zeusallmighty11.t1.listeners;
 
 
 import com.tenjava.entries.zeusallmighty11.t1.FancyTransit;
+import com.tenjava.entries.zeusallmighty11.t1.rails.RailManager;
 import com.tenjava.entries.zeusallmighty11.t1.rails.RailSign;
-import com.tenjava.entries.zeusallmighty11.t1.safety.SafeLocation;
 import com.tenjava.entries.zeusallmighty11.t1.temp.CooldownCart;
 import com.tenjava.entries.zeusallmighty11.t1.util.Messenger;
 import org.bukkit.Material;
@@ -63,13 +63,16 @@ public class RailListener implements Listener
 
 
 
-            RailSign rs = plugin.getRailSigns().get(new SafeLocation(to.getLocation()));
+            RailSign rs = RailSign.fromLocation(to.getLocation());
 
             if (rs == null)
             {
+                /** TEMPORARY AWHEOFOHAIEWHFPOAIWEFOHIOAEWOHFIAEWPF **/
                 Messenger.announce("UH OH...");
                 return;
             }
+
+            RailManager.perform(minecart, rs);
 
         }
 

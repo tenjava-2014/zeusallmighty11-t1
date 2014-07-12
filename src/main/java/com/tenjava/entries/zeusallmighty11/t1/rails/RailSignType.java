@@ -1,7 +1,10 @@
 package com.tenjava.entries.zeusallmighty11.t1.rails;
 
 
-public enum RailSignType
+import java.io.Serializable;
+
+
+public enum RailSignType implements Serializable
 {
     INVALID,
     JUMP,

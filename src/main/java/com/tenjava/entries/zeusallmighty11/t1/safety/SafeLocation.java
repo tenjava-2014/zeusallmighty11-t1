@@ -3,19 +3,22 @@ package com.tenjava.entries.zeusallmighty11.t1.safety;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.util.Vector;
+
+import java.io.Serializable;
 
 
 /**
  * A safe location class which does not store World references and can be serialized
  */
-public class SafeLocation
+public class SafeLocation implements Serializable
 {
 
     // ----------------------------------------------------------------------------------------- \\
 
-    Vector vector;
     String worldName;
+    double x;
+    double y;
+    double z;
     float pitch;
     float yaw;
 
@@ -27,7 +30,9 @@ public class SafeLocation
 
     public SafeLocation(Location location)
     {
-        this.vector = location.toVector();
+        this.x = location.getX();
+        this.y = location.getY();
+        this.z = location.getZ();
         this.worldName = location.getWorld().getName();
         this.pitch = location.getPitch();
         this.yaw = location.getYaw();
@@ -46,7 +51,7 @@ public class SafeLocation
      */
     public Location getLocation()
     {
-        return new Location(Bukkit.getWorld(worldName), vector.getX(), vector.getY(), vector.getZ(), pitch, yaw);
+        return new Location(Bukkit.getWorld(worldName), x, y, z, pitch, yaw);
     }
 
 
@@ -59,7 +64,7 @@ public class SafeLocation
      */
     public String serialize()
     {
-        return worldName + "," + vector.getX() + "," + vector.getY() + "," + vector.getZ() + "," + pitch + "," + yaw;
+        return worldName + "," + x + "," + y + "," + z + "," + pitch + "," + yaw;
     }
 
 
@@ -69,9 +74,25 @@ public class SafeLocation
 
 
 
-    public void setVector(Vector vector)
+    public void setX(double x)
     {
-        this.vector = vector;
+        this.x = x;
+    }
+
+
+
+
+    public void setY(double y)
+    {
+        this.y = y;
+    }
+
+
+
+
+    public void setZ(double z)
+    {
+        this.z = z;
     }
 
 
@@ -104,9 +125,25 @@ public class SafeLocation
 
 
 
-    public Vector getVector()
+    public double getX()
     {
-        return vector;
+        return x;
+    }
+
+
+
+
+    public double getY()
+    {
+        return y;
+    }
+
+
+
+
+    public double getZ()
+    {
+        return z;
     }
 
 
