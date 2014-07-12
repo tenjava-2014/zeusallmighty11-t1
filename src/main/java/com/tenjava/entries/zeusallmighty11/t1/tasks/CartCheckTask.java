@@ -45,7 +45,6 @@ public class CartCheckTask extends BukkitRunnable
 
                         if (near == null || !cartTypes.contains(near.getType()))
                         {
-                            System.out.println(near);
                             continue;
                         }
 

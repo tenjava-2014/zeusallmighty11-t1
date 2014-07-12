@@ -73,29 +73,6 @@ public class SignCreateListener implements Listener
             }
 
             RailManager.createSign(p, RailSignType.JUMP, lines, e.getBlock());
-
-        }
-
-
-
-
-        // if sign is a propel sign
-        else if (lines[1].equalsIgnoreCase("propel"))
-        {
-            // if user doesn't have permission
-            if (!p.hasPermission("fancytransit.sign.create.propel"))
-            {
-                Messenger.tell(p, "&cYou don't have permission to create propel rails!");
-                return;
-            }
-
-            if (!NumberUtil.isFloat(lines[2]))
-            {
-                Messenger.tell(p, "&cVlaue not a valid float value: '&e" + lines[2] + "&c'!");
-                return;
-            }
-
-
         }
 
 
