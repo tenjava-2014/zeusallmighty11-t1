@@ -26,7 +26,7 @@ public class RailSign
     {
         this.type = type;
         this.power = power;
-        this.makeConnection = false;
+        this.makeConnection = makeConnection;
         this.signLoc = new SafeLocation(signLoc);
         this.railLoc = new SafeLocation(railLoc);
     }

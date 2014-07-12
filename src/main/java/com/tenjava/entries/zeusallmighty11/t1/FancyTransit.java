@@ -1,11 +1,21 @@
 package com.tenjava.entries.zeusallmighty11.t1;
 
 
+import com.tenjava.entries.zeusallmighty11.t1.listeners.RailListener;
 import com.tenjava.entries.zeusallmighty11.t1.listeners.SignCreateListener;
 import com.tenjava.entries.zeusallmighty11.t1.listeners.TeleportListener;
 import com.tenjava.entries.zeusallmighty11.t1.listeners.TestListener;
+import com.tenjava.entries.zeusallmighty11.t1.rails.RailSign;
+import com.tenjava.entries.zeusallmighty11.t1.safety.SafeLocation;
+import com.tenjava.entries.zeusallmighty11.t1.tasks.RailCooldownTask;
+import com.tenjava.entries.zeusallmighty11.t1.temp.CooldownCart;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class FancyTransit extends JavaPlugin
@@ -14,6 +24,11 @@ public class FancyTransit extends JavaPlugin
 
     private static FancyTransit instance;
 
+
+    Map<SafeLocation, RailSign> railSigns;
+    List<CooldownCart> minecartCooldowns;
+
+    RailCooldownTask railCooldownTask;
 
     // ----------------------------------------------------------------------------------------- \\
 
@@ -29,6 +44,12 @@ public class FancyTransit extends JavaPlugin
         // instantiate singleton for use
         instance = this;
 
+        // instantiate the map for railsigns
+        railSigns = new HashMap<>();
+
+        // instantiate the map for minecart cooldowns
+        minecartCooldowns = new ArrayList<>();
+
 
         // handle configuration
         saveDefaultConfig();
@@ -39,13 +60,19 @@ public class FancyTransit extends JavaPlugin
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new TeleportListener(this), this);
         pm.registerEvents(new SignCreateListener(this), this);
-
+        pm.registerEvents(new RailListener(this), this);
 
 
         // temporary testing listener
         pm.registerEvents(new TestListener(this), this);
 
 
+
+
+        // start Rail Cooldown Task
+        railCooldownTask = new RailCooldownTask(this);
+        railCooldownTask.runTaskTimer(this, 0L, 1L);
+        
     }
 
 
@@ -96,6 +123,30 @@ public class FancyTransit extends JavaPlugin
     }
 
 
+
+
+    /**
+     * Returns a Map of the rail signs in the map
+     *
+     * @return a collection of the active rail signs
+     */
+    public Map<SafeLocation, RailSign> getRailSigns()
+    {
+        return railSigns;
+    }
+
+
+
+
+    /**
+     * Returns a Map of the minecarts whom have cooldowns
+     *
+     * @return a collection of minecarts with cooldowns
+     */
+    public List<CooldownCart> getMinecartCooldowns()
+    {
+        return minecartCooldowns;
+    }
 
     // ----------------------------------------------------------------------------------------- \\
 }
