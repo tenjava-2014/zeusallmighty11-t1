@@ -8,7 +8,6 @@ public enum RailSignType implements Serializable
 {
     INVALID,
     JUMP,
-    PROPEL,
     HOVER,;
 
 

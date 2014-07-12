@@ -76,6 +76,34 @@ public class SignCreateListener implements Listener
         }
 
 
+        // if sign is a jump sign
+        else if (lines[1].equalsIgnoreCase("hover"))
+        {
+
+            // if user doesn't have permission
+            if (!p.hasPermission("fancytransit.sign.create.hover"))
+            {
+                Messenger.tell(p, "&cYou don't have permission to create hover rails!");
+                return;
+            }
+
+            if (!NumberUtil.isFloat(lines[2]))
+            {
+                Messenger.tell(p, "&cVlaue not a valid float value: '&e" + lines[2] + "&c'!");
+                return;
+            }
+
+
+            if (lines[3].equals(""))
+            {
+                Messenger.tell(p, "&cYou must specify on line 4 if the Minecart should connect to rails after being airborne.");
+                return;
+            }
+
+            RailManager.createSign(p, RailSignType.HOVER, lines, e.getBlock());
+        }
+
+
     }
 
 

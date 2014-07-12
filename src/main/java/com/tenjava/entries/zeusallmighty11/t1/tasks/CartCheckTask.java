@@ -14,16 +14,19 @@ public class CartCheckTask extends BukkitRunnable
 {
 
 
-    private Minecart cart;
-
     private static final List<Material> cartTypes = Arrays.asList(Material.RAILS, Material.POWERED_RAIL, Material.DETECTOR_RAIL, Material.ACTIVATOR_RAIL);
 
 
+    private Minecart cart;
+    private boolean jump;
 
 
-    public CartCheckTask(Minecart cart)
+
+
+    public CartCheckTask(Minecart cart, boolean jump)
     {
         this.cart = cart;
+        this.jump = jump;
     }
 
 
@@ -32,7 +35,7 @@ public class CartCheckTask extends BukkitRunnable
     @Override
     public void run()
     {
-        if (cart.getVelocity().getY() < 0)
+        if (cart.getVelocity().getY() < 0 || !jump)
         {
 
             for (int x = 0; x < 3; x++)
