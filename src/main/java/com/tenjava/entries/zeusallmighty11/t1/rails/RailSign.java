@@ -14,11 +14,11 @@ public class RailSign implements Serializable
 
     public static final long serialVersionUID = 128192371521242L;
 
-    RailSignType type;
-    float power;
-    boolean connect;
-    SafeLocation signLoc;
-    SafeLocation railLoc;
+    private RailSignType type;
+    private float power;
+    private boolean connect;
+    private SafeLocation signLoc;
+    private SafeLocation railLoc;
 
 
     // ----------------------------------------------------------------------------------------- \\

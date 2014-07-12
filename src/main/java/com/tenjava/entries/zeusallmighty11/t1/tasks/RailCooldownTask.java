@@ -15,8 +15,8 @@ public class RailCooldownTask extends BukkitRunnable
 {
 
 
-    private FancyTransit plugin;
-    List<CooldownCart> toRemove;
+    private final FancyTransit plugin;
+    private final List<CooldownCart> toRemove;
 
 
 

@@ -15,12 +15,12 @@ public class SafeLocation implements Serializable
 
     // ----------------------------------------------------------------------------------------- \\
 
-    String worldName;
-    double x;
-    double y;
-    double z;
-    float pitch;
-    float yaw;
+    private String worldName;
+    private double x;
+    private double y;
+    private double z;
+    private float pitch;
+    private float yaw;
 
 
     // ----------------------------------------------------------------------------------------- \\

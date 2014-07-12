@@ -10,16 +10,16 @@ public class CooldownCart
 {
 
 
-    UUID uuid;
-    long time;
+    private UUID uuid;
+    private long time;
 
 
 
 
-    public CooldownCart(UUID id, long time)
+    public CooldownCart(UUID id)
     {
         this.uuid = id;
-        this.time = time;
+        this.time = 10L;
     }
 
 

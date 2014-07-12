@@ -12,14 +12,9 @@ public class TeleportListener implements Listener
 {
 
 
-    private FancyTransit plugin;
-
-
-
-
     public TeleportListener(FancyTransit plugin)
     {
-        this.plugin = plugin;
+        FancyTransit plugin1 = plugin;
     }
 
 

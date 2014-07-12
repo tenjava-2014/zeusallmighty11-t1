@@ -26,12 +26,12 @@ public class NumberUtil
         try
         {
             Float.parseFloat(s);
+            return true;
         }
         catch (NumberFormatException nfe)
         {
             return false;
         }
-        return true;
     }
 
 

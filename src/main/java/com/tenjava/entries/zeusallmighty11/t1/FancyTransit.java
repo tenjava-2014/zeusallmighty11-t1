@@ -23,18 +23,18 @@ public class FancyTransit extends JavaPlugin
     private static FancyTransit instance;
 
 
-    Map<SafeLocation, RailSign> railSigns;
-    List<CooldownCart> minecartCooldowns;
+    private Map<SafeLocation, RailSign> railSigns;
+    private List<CooldownCart> minecartCooldowns;
 
-    RailCooldownTask railCooldownTask;
+    private RailCooldownTask railCooldownTask;
 
 
-    File signsDir;
+    private File signsDir;
 
 
     // config stuff
-    boolean minecartBoats;
-    boolean minecartBoatDrops;
+    private boolean minecartBoats;
+    private boolean minecartBoatDrops;
 
 
 

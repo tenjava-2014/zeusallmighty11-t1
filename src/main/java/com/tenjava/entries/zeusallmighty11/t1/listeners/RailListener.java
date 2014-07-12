@@ -5,6 +5,7 @@ import com.tenjava.entries.zeusallmighty11.t1.FancyTransit;
 import com.tenjava.entries.zeusallmighty11.t1.rails.RailManager;
 import com.tenjava.entries.zeusallmighty11.t1.rails.RailSign;
 import com.tenjava.entries.zeusallmighty11.t1.temp.CooldownCart;
+import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
@@ -20,7 +21,7 @@ public class RailListener implements Listener
 {
 
 
-    private FancyTransit plugin;
+    private final FancyTransit plugin;
 
 
 
@@ -55,7 +56,7 @@ public class RailListener implements Listener
                 {
                     minecart.setMetadata("rail_cooldown", new FixedMetadataValue(plugin, "rail_cooldown"));
 
-                    CooldownCart cc = new CooldownCart(minecart.getUniqueId(), 10L);
+                    CooldownCart cc = new CooldownCart(minecart.getUniqueId());
                     plugin.getMinecartCooldowns().add(cc);
 
                     RailSign rs = RailSign.fromLocation(to.getLocation());
@@ -78,10 +79,12 @@ public class RailListener implements Listener
                     minecart.remove();
 
                     final Boat boat = (Boat) to.getLocation().getWorld().spawnEntity(to.getLocation(), EntityType.BOAT);
+                    boat.getWorld().playEffect(boat.getLocation(), Effect.MOBSPAWNER_FLAMES, 10);
                     boat.setPassenger(passenger);
                     boat.setMetadata("minecart", new FixedMetadataValue(plugin, "minecart"));
                     boat.setMetadata("invincible", new FixedMetadataValue(plugin, "invincible"));
                     boat.setVelocity(v);
+
 
 
 

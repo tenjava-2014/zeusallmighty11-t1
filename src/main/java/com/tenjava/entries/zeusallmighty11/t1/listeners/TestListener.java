@@ -9,14 +9,9 @@ public class TestListener implements Listener
 {
 
 
-    private FancyTransit plugin;
-
-
-
-
     public TestListener(FancyTransit plugin)
     {
-        this.plugin = plugin;
+        FancyTransit plugin1 = plugin;
     }
 
 

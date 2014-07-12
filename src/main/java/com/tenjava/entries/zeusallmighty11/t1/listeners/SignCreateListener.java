@@ -17,14 +17,9 @@ public class SignCreateListener implements Listener
 {
 
 
-    private FancyTransit plugin;
-
-
-
-
     public SignCreateListener(FancyTransit plugin)
     {
-        this.plugin = plugin;
+        FancyTransit plugin1 = plugin;
     }
 
 

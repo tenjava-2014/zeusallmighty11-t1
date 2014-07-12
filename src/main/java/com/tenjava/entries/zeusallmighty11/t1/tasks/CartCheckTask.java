@@ -19,8 +19,7 @@ public class CartCheckTask extends BukkitRunnable
     private static final List<Material> cartTypes = Arrays.asList(Material.RAILS, Material.POWERED_RAIL, Material.DETECTOR_RAIL, Material.ACTIVATOR_RAIL);
 
 
-    private Minecart cart;
-    private boolean jump;
+    private final Minecart cart;
 
 
 
@@ -28,7 +27,7 @@ public class CartCheckTask extends BukkitRunnable
     public CartCheckTask(Minecart cart, boolean jump)
     {
         this.cart = cart;
-        this.jump = jump;
+        boolean jump1 = jump;
     }
 
 

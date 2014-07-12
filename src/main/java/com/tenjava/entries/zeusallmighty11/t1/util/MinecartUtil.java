@@ -21,6 +21,7 @@ public class MinecartUtil
      * @param power   The power (height) to jump (not in blocks)
      * @param connect Connect the cart to rails when it comes back down
      */
+    @SuppressWarnings("deprecation")
     public static void jump(final Minecart cart, float power, boolean connect)
     {
         final Block rail = cart.getLocation().getBlock();
@@ -50,6 +51,7 @@ public class MinecartUtil
         {
 
 
+            @SuppressWarnings("deprecation")
             @Override
             public void run()
             {
@@ -69,6 +71,7 @@ public class MinecartUtil
      * @param power   The velocity power to move forward (not in blocks)
      * @param connect Connect the cart to rails when it comes back down
      */
+    @SuppressWarnings("deprecation")
     public static void hover(final Minecart cart, float power, boolean connect)
     {
         final Block rail = cart.getLocation().getBlock();
@@ -98,6 +101,7 @@ public class MinecartUtil
         {
 
 
+            @SuppressWarnings("deprecation")
             @Override
             public void run()
             {

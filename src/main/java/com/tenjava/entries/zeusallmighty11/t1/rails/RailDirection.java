@@ -16,6 +16,7 @@ public enum RailDirection
 
 
 
+    @SuppressWarnings("deprecation")
     public static RailDirection getDirection(Block b)
     {
         byte data = b.getData();
