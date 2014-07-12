@@ -1,14 +1,17 @@
 package com.tenjava.entries.zeusallmighty11.t1;
 
 
+import com.tenjava.entries.zeusallmighty11.t1.listeners.TeleportListener;
+import com.tenjava.entries.zeusallmighty11.t1.listeners.TestListener;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
-public class TempTransit extends JavaPlugin
+public class FancyTransit extends JavaPlugin
 {
     // ----------------------------------------------------------------------------------------- \\
 
-    private static TempTransit instance;
+    private static FancyTransit instance;
 
 
     // ----------------------------------------------------------------------------------------- \\
@@ -16,13 +19,27 @@ public class TempTransit extends JavaPlugin
 
 
 
+    /*
+    Plugin enabling...
+     */
     @Override
     public void onEnable()
     {
+        // instantiate singleton for use
         instance = this;
 
+
+        // handle configuration
         saveDefaultConfig();
         loadConfig();
+
+
+        // register events
+        PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(new TeleportListener(this), this);
+
+        // temporary testing listener
+        pm.registerEvents(new TestListener(this), this);
 
 
     }
@@ -30,12 +47,16 @@ public class TempTransit extends JavaPlugin
 
 
 
+    /*
+    Plugin disabling...
+     */
     @Override
     public void onDisable()
     {
 
 
 
+        // kill off the singleton to prevent ram loss
         instance = null;
     }
 
@@ -46,6 +67,9 @@ public class TempTransit extends JavaPlugin
 
 
 
+    /*
+    Load configuration
+     */
     private void loadConfig()
     {
 
@@ -57,7 +81,12 @@ public class TempTransit extends JavaPlugin
 
 
 
-    public static TempTransit getInstance()
+    /**
+     * Grabs the plugin's main class via singleton
+     *
+     * @return FancyTransit instance
+     */
+    public static FancyTransit getInstance()
     {
         return instance;
     }
