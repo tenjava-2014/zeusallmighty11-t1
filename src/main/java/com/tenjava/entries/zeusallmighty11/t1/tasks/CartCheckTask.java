@@ -1,7 +1,6 @@
 package com.tenjava.entries.zeusallmighty11.t1.tasks;
 
 
-import com.tenjava.entries.zeusallmighty11.t1.util.Messenger;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Minecart;
@@ -49,9 +48,6 @@ public class CartCheckTask extends BukkitRunnable
                             System.out.println(near);
                             continue;
                         }
-
-
-                        Messenger.announce("Teleporting cart!");
 
                         cart.teleport(near.getLocation());
                         cancel();
