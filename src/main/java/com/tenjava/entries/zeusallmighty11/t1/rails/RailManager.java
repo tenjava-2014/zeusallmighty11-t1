@@ -5,6 +5,7 @@ import com.tenjava.entries.zeusallmighty11.t1.FancyTransit;
 import com.tenjava.entries.zeusallmighty11.t1.util.BlockUtil;
 import com.tenjava.entries.zeusallmighty11.t1.util.Messenger;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
 
 
@@ -52,4 +53,15 @@ public class RailManager
 
 
     }
+
+
+
+
+    public static void perform(Minecart cart, RailSign rs)
+    {
+
+
+
+    }
+
 }

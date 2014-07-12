@@ -12,6 +12,7 @@ import com.tenjava.entries.zeusallmighty11.t1.temp.CooldownCart;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +30,9 @@ public class FancyTransit extends JavaPlugin
     List<CooldownCart> minecartCooldowns;
 
     RailCooldownTask railCooldownTask;
+
+
+    File signsDir;
 
     // ----------------------------------------------------------------------------------------- \\
 
@@ -56,6 +60,10 @@ public class FancyTransit extends JavaPlugin
         loadConfig();
 
 
+        // handle rail signs
+        loadRailSigns();
+
+
         // register events
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new TeleportListener(this), this);
@@ -72,7 +80,7 @@ public class FancyTransit extends JavaPlugin
         // start Rail Cooldown Task
         railCooldownTask = new RailCooldownTask(this);
         railCooldownTask.runTaskTimer(this, 0L, 1L);
-        
+
     }
 
 
@@ -84,7 +92,8 @@ public class FancyTransit extends JavaPlugin
     @Override
     public void onDisable()
     {
-
+        // save all rail signs
+        saveSigns();
 
 
         // kill off the singleton to prevent ram loss
@@ -104,6 +113,47 @@ public class FancyTransit extends JavaPlugin
     private void loadConfig()
     {
 
+    }
+
+
+
+
+    /*
+    Load all rail serialized rail signs
+     */
+    private void loadRailSigns()
+    {
+        signsDir = new File(getDataFolder(), "/signs/");
+
+        if (!signsDir.exists())
+        {
+            signsDir.mkdir();
+        }
+
+        int count = 0;
+        for (File f : signsDir.listFiles())
+        {
+            RailSign rs = RailSign.load(f);
+            railSigns.put(rs.getRailLoc(), rs);
+            count++;
+        }
+
+
+        getLogger().info("Loaded " + count + " rail signs.");
+    }
+
+
+
+
+    /*
+    Save all rail signs to file
+     */
+    private void saveSigns()
+    {
+        for (RailSign rs : railSigns.values())
+        {
+            rs.save(signsDir);
+        }
     }
 
 

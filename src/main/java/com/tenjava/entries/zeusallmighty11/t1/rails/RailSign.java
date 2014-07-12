@@ -4,15 +4,16 @@ package com.tenjava.entries.zeusallmighty11.t1.rails;
 import com.tenjava.entries.zeusallmighty11.t1.safety.SafeLocation;
 import org.bukkit.Location;
 
+import java.io.*;
 
-public class RailSign
+
+public class RailSign implements Serializable
 {
     // ----------------------------------------------------------------------------------------- \\
 
-
     RailSignType type;
     float power;
-    boolean makeConnection;
+    boolean connect;
     SafeLocation signLoc;
     SafeLocation railLoc;
 
@@ -26,10 +27,50 @@ public class RailSign
     {
         this.type = type;
         this.power = power;
-        this.makeConnection = makeConnection;
+        this.connect = makeConnection;
         this.signLoc = new SafeLocation(signLoc);
         this.railLoc = new SafeLocation(railLoc);
     }
+
+
+
+
+    public void save(File dir)
+    {
+        File f = new File(dir, signLoc.serialize().replace(",", ""));
+
+        try
+        {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
+            oos.writeObject(this);
+            oos.flush();
+            oos.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+    public static RailSign load(File f)
+    {
+        RailSign rs = null;
+        try
+        {
+            ObjectInputStream oos = new ObjectInputStream(new FileInputStream(f));
+            rs = (RailSign) oos.readObject();
+            oos.close();
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
 
 
     // ----------------------------------------------------------------------------------------- \\
@@ -58,9 +99,9 @@ public class RailSign
 
 
 
-    public void setMakeConnection(boolean makeConnection)
+    public void setConnect(boolean connect)
     {
-        this.makeConnection = makeConnection;
+        this.connect = connect;
     }
 
 
@@ -103,9 +144,9 @@ public class RailSign
 
 
 
-    public boolean isMakeConnection()
+    public boolean isConnect()
     {
-        return makeConnection;
+        return connect;
     }
 
 

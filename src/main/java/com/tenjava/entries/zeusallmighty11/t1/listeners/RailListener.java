@@ -2,6 +2,8 @@ package com.tenjava.entries.zeusallmighty11.t1.listeners;
 
 
 import com.tenjava.entries.zeusallmighty11.t1.FancyTransit;
+import com.tenjava.entries.zeusallmighty11.t1.rails.RailSign;
+import com.tenjava.entries.zeusallmighty11.t1.safety.SafeLocation;
 import com.tenjava.entries.zeusallmighty11.t1.temp.CooldownCart;
 import com.tenjava.entries.zeusallmighty11.t1.util.Messenger;
 import org.bukkit.Material;
@@ -58,6 +60,17 @@ public class RailListener implements Listener
 
             CooldownCart cc = new CooldownCart(minecart.getUniqueId(), 10L);
             plugin.getMinecartCooldowns().add(cc);
+
+
+
+            RailSign rs = plugin.getRailSigns().get(new SafeLocation(to.getLocation()));
+
+            if (rs == null)
+            {
+                Messenger.announce("UH OH...");
+                return;
+            }
+
         }
 
     }

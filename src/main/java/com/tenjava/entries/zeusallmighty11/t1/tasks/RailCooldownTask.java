@@ -42,6 +42,12 @@ public class RailCooldownTask extends BukkitRunnable
 
                 Entity e = EntityUtil.getEntityByID(cc.getUuid());
 
+                if (e == null)
+                {
+                    toRemove.add(cc);
+                    continue;
+                }
+
                 if (e.hasMetadata("rail_cooldown"))
                 {
                     e.removeMetadata("rail_cooldown", plugin);
