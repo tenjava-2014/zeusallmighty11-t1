@@ -6,6 +6,9 @@ import com.tenjava.entries.zeusallmighty11.t1.rails.RailSign;
 import com.tenjava.entries.zeusallmighty11.t1.safety.SafeLocation;
 import com.tenjava.entries.zeusallmighty11.t1.tasks.RailCooldownTask;
 import com.tenjava.entries.zeusallmighty11.t1.temp.CooldownCart;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -35,7 +38,7 @@ public class FancyTransit extends JavaPlugin
     // config stuff
     private boolean minecartBoats;
     private boolean minecartBoatDrops;
-
+    private boolean obsidianBoatsExist;
 
 
     // ----------------------------------------------------------------------------------------- \\
@@ -86,6 +89,15 @@ public class FancyTransit extends JavaPlugin
         railCooldownTask = new RailCooldownTask(this);
         railCooldownTask.runTaskTimer(this, 0L, 1L);
 
+
+
+
+        // if obsidian boats enabled, create recipe
+        if (obsidianBoatsExist)
+        {
+            ShapedRecipe recipe = new ShapedRecipe(new ItemStack(Material.BOAT));
+        }
+
     }
 
 
@@ -119,6 +131,8 @@ public class FancyTransit extends JavaPlugin
     {
         minecartBoats = getConfig().getBoolean("minecart-transform");
         minecartBoatDrops = getConfig().getBoolean("transformed-drops-minecart");
+
+        obsidianBoatsExist = getConfig().getBoolean("obsidian-boats-exist");
     }
 
 

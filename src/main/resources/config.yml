@@ -3,3 +3,6 @@ minecart-transform: true
 
 # Should minecarts that turned into boats drop minecarts?
 transformed-drops-minecart: true
+
+# Obsidian boats craftable?
+obsidian-boats-exist: true
