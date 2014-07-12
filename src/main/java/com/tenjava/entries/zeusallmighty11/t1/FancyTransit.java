@@ -34,6 +34,11 @@ public class FancyTransit extends JavaPlugin
 
     File signsDir;
 
+
+    // config stuff
+    boolean minecartBoats;
+    
+
     // ----------------------------------------------------------------------------------------- \\
 
 

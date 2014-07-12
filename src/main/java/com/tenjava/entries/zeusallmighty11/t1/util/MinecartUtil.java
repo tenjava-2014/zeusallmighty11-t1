@@ -21,7 +21,7 @@ public class MinecartUtil
      * @param power   The power (height) to jump (not in blocks)
      * @param connect Connect the cart to rails when it comes back down
      */
-    public static void jump(Minecart cart, float power, boolean connect)
+    public static void jump(final Minecart cart, float power, boolean connect)
     {
         final Block rail = cart.getLocation().getBlock();
         final byte data = rail.getData();
@@ -29,8 +29,17 @@ public class MinecartUtil
 
         if (connect)
         {
-            // face rail toward more rails
-            new CartCheckTask(cart, true).runTaskTimer(FancyTransit.getInstance(), 0L, 1L);
+            new BukkitRunnable()
+            {
+
+
+                @Override
+                public void run()
+                {
+                    // face rail toward more rails
+                    new CartCheckTask(cart, true).runTaskTimer(FancyTransit.getInstance(), 0L, 1L);
+                }
+            }.runTaskLater(FancyTransit.getInstance(), 20L);
         }
 
         rail.setType(Material.AIR);

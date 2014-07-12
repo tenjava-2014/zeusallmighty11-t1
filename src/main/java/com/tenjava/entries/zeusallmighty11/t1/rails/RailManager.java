@@ -75,6 +75,7 @@ public class RailManager
      */
     public static void perform(Minecart cart, RailSign rs)
     {
+        Messenger.announce("Making minecart " + rs.getType());
         switch (rs.getType())
         {
             case INVALID:

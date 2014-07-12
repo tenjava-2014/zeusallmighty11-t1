@@ -13,7 +13,7 @@ public class RailSign implements Serializable
     // ----------------------------------------------------------------------------------------- \\
 
     public static final long serialVersionUID = 128192371521242L;
-    
+
     RailSignType type;
     float power;
     boolean connect;
@@ -90,11 +90,6 @@ public class RailSign implements Serializable
         }
         return null;
     }
-
-
-
-
-    // ----------------------------------------------------------------------------------------- \\
 
 
 
