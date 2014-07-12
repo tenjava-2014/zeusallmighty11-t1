@@ -10,7 +10,7 @@ public class Messenger
 {
 
 
-    private static final String PREFIX = "&3[&dFancyTransit&3]&r ";
+    private static final String PREFIX = "§3[§dFancyTransit§3]§r ";
 
 
 
@@ -21,7 +21,7 @@ public class Messenger
      * @param o - Receiver of the message. Either a CommandSender instance, otherwise sent to console.
      * @param msg - The message(s) to send
      */
-    public static void sendMessage(Object o, String... msg)
+    public static void tell(Object o, String... msg)
     {
         StringBuilder sb = new StringBuilder();
 
