@@ -1,6 +1,7 @@
 package com.tenjava.entries.zeusallmighty11.t1;
 
 
+import com.tenjava.entries.zeusallmighty11.t1.listeners.SignCreateListener;
 import com.tenjava.entries.zeusallmighty11.t1.listeners.TeleportListener;
 import com.tenjava.entries.zeusallmighty11.t1.listeners.TestListener;
 import org.bukkit.plugin.PluginManager;
@@ -37,6 +38,9 @@ public class FancyTransit extends JavaPlugin
         // register events
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new TeleportListener(this), this);
+        pm.registerEvents(new SignCreateListener(this), this);
+
+
 
         // temporary testing listener
         pm.registerEvents(new TestListener(this), this);
