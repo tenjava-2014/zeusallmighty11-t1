@@ -2,15 +2,17 @@ package com.tenjava.entries.zeusallmighty11.t1.listeners;
 
 
 import com.tenjava.entries.zeusallmighty11.t1.FancyTransit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Boat;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Vehicle;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.vehicle.VehicleCreateEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.vehicle.VehicleDamageEvent;
 import org.bukkit.event.vehicle.VehicleDestroyEvent;
 import org.bukkit.event.vehicle.VehicleMoveEvent;
@@ -111,12 +113,28 @@ public class FloatyBoatyListener implements Listener
 
 
     @EventHandler
-    public void onBoat(VehicleCreateEvent e)
+    public void onClick(PlayerInteractEvent e)
     {
-        if (e.getVehicle() instanceof Boat)
+        Player p = e.getPlayer();
+        ItemStack is = p.getItemInHand();
+
+
+        if (is == null || is.getType() != Material.BOAT)
         {
-            this.boats.add((Boat) e.getVehicle());
+            return;
         }
+
+        if (is.hasItemMeta() && is.getItemMeta().hasDisplayName() && is.getItemMeta().getDisplayName().equalsIgnoreCase("§5Obsidian Boat"))
+        {
+            if (e.getClickedBlock() != null && (e.getClickedBlock().getType() == Material.LAVA || e.getClickedBlock().getType() == Material.STATIONARY_LAVA))
+            {
+                p.setItemInHand(null);
+                Location loc = e.getClickedBlock().getLocation().add(0, 1, 0);
+                Boat boat = (Boat) loc.getWorld().spawnEntity(loc, EntityType.BOAT);
+                this.boats.add(boat);
+            }
+        }
+
     }
 
 
