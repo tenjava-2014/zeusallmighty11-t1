@@ -76,7 +76,7 @@ public class FancyTransit extends JavaPlugin
         pm.registerEvents(new TeleportListener(this), this);
         pm.registerEvents(new SignCreateListener(this), this);
         pm.registerEvents(new RailListener(this), this);
-        pm.registerEvents(new BoatListener(this), this);
+        pm.registerEvents(new FloatyBoatyListener(this), this);
 
 
         // temporary testing listener
