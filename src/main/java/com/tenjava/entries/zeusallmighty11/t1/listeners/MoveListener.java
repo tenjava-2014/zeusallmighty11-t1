@@ -42,6 +42,11 @@ public class MoveListener implements Listener
 
         if (boots.hasItemMeta() && boots.getItemMeta().hasDisplayName() && boots.getItemMeta().getDisplayName().equalsIgnoreCase("Rocket Boots"))
         {
+            if (!p.hasPermission("fancytransit.boots.rocket"))
+            {
+                return;
+            }
+
             if (p.getLocation().subtract(0, 1, 0).getBlock() == null || p.getLocation().subtract(0, 1, 0).getBlock().getType() == Material.AIR)
             {
                 p.setVelocity(p.getLocation().getDirection().add(new Vector(0, 0.25, 0)).multiply(0.5));

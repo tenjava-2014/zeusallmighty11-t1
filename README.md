@@ -38,6 +38,8 @@ Usage
 This plugin is 'FancyTransit'. It adds new and improved elements to the current transportation systems in Minecraft.
 
 
+---------------------------------------
+
 Minecart Rails:
 - Activator rails can now be used to make Minecarts 'bounce' or 'however.
 
@@ -49,15 +51,25 @@ Tutorial:
 <amount>
 <connect>
 
+---------------------------------------
+
 The second line indicates whether it is 'jump' or 'hover'. So put 'jump' or 'hover'.
 The third line indicates the amount of power to apply. Smaller amounts generally work better, but when doing a hover use a large number like 4 or 5.
 The fourth and final line indicates whether or not the Minecart should attempt to connect to rails after being airborne.
 
+---------------------------------------
 
 Boats:
 - Obsidian boats can be crafted and can float on lava like in water
 Recipe is the same as a boat, but replaced wooden planks with obsidian.
 
+---------------------------------------
 
 Boots:
-- Rocket boots can be crafted with leather boots and 3 feathers to give the user the ability to fly around as long as the boots are on
+- Rocket boots can be crafted with leather boots and 3 feathers to give the user the ability to fly around as long as the boots are on.
+    * Requires permission 'fancytransit.boots.rocket'
+
+---------------------------------------
+
+Villagers:
+- You can ride villagers around.. but they take you where they want to go
