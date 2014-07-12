@@ -73,3 +73,8 @@ Boots:
 
 Villagers:
 - You can ride villagers around.. but they take you where they want to go
+
+---------------------------------------
+
+Ocelots:
+- Right click and find out :)
