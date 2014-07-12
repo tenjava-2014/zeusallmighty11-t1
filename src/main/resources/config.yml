@@ -6,3 +6,7 @@ transformed-drops-minecart: true
 
 # Obsidian boats craftable?
 obsidian-boats-exist: true
+
+
+# Glide boots enabled?
+rocket-boots-enabled: true

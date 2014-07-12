@@ -10,6 +10,7 @@ import com.tenjava.entries.zeusallmighty11.t1.util.ItemUtil;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -40,7 +41,7 @@ public class FancyTransit extends JavaPlugin
     private boolean minecartBoats;
     private boolean minecartBoatDrops;
     private boolean obsidianBoatsExist;
-
+    private boolean glideBootsEnabled;
 
     // ----------------------------------------------------------------------------------------- \\
 
@@ -78,6 +79,7 @@ public class FancyTransit extends JavaPlugin
         pm.registerEvents(new SignCreateListener(this), this);
         pm.registerEvents(new RailListener(this), this);
         pm.registerEvents(new FloatyBoatyListener(this), this);
+        pm.registerEvents(new MoveListener(this), this);
 
 
         // temporary testing listener
@@ -100,6 +102,16 @@ public class FancyTransit extends JavaPlugin
 
             recipe.shape("   ", "O O", "OOO");
             recipe.setIngredient('O', Material.OBSIDIAN);
+
+            getServer().addRecipe(recipe);
+        }
+
+        // if glide boots enabled, create
+        if (glideBootsEnabled)
+        {
+            ShapelessRecipe recipe = new ShapelessRecipe(ItemUtil.withName(new ItemStack(Material.LEATHER_BOOTS), "Rocket Boots"));
+            recipe.addIngredient(3, Material.FEATHER);
+            recipe.addIngredient(1, Material.LEATHER_BOOTS);
 
             getServer().addRecipe(recipe);
         }
@@ -139,6 +151,9 @@ public class FancyTransit extends JavaPlugin
         minecartBoatDrops = getConfig().getBoolean("transformed-drops-minecart");
 
         obsidianBoatsExist = getConfig().getBoolean("obsidian-boats-exist");
+
+        glideBootsEnabled = getConfig().getBoolean("glide-boots-enabled");
+
     }
 
 
