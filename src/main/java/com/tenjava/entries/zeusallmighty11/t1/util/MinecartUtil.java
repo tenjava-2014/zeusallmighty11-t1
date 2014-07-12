@@ -14,6 +14,12 @@ public class MinecartUtil
 {
 
 
+    /**
+     * Makes a minecart 'jump'
+     * @param cart The minecart
+     * @param power The power (height) to jump (not in blocks)
+     * @param connect Connect the cart to rails when it comes back down
+     */
     public static void jump(Minecart cart, float power, boolean connect)
     {
         final Block rail = cart.getLocation().getBlock();
@@ -41,6 +47,23 @@ public class MinecartUtil
                 rail.setData(data);
             }
         }.runTaskLater(FancyTransit.getInstance(), 4L);
+
+
+    }
+
+
+
+
+    public static void propel(Minecart cart, float power, boolean connect)
+    {
+
+    }
+
+
+
+
+    public static void doHover(Minecart cart, float power)
+    {
 
 
     }

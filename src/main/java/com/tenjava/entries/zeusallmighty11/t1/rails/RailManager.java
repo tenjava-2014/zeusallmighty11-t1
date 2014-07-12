@@ -94,9 +94,15 @@ public class RailManager
             }
             break;
             case PROPEL:
-                break;
+            {
+                MinecartUtil.propel(cart, rs.getPower(), rs.isConnect());
+            }
+            break;
             case HOVER:
-                break;
+            {
+                MinecartUtil.doHover(cart, rs.getPower());
+            }
+            break;
         }
     }
 
