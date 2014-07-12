@@ -4,6 +4,7 @@ package com.tenjava.entries.zeusallmighty11.t1.listeners;
 import com.tenjava.entries.zeusallmighty11.t1.FancyTransit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Ocelot;
 import org.bukkit.entity.Player;
@@ -85,8 +86,18 @@ public class RidingListener implements Listener
 
 
                     final Block b = p.getLocation().subtract(0, 2, 0).getBlock();
+                    final Block left = b.getRelative(BlockFace.EAST);
+                    final Block right = b.getRelative(BlockFace.WEST);
 
                     final Material prev = b.getType();
+                    final Material prev2 = left.getType();
+                    final Material prev3 = right.getType();
+
+                    left.setType(Material.WOOL);
+                    left.setData(Byte.parseByte(getRandomNumber(14) + ""));
+
+                    right.setType(Material.WOOL);
+                    right.setData(Byte.parseByte(getRandomNumber(14) + ""));
 
                     b.setType(Material.WOOL);
                     b.setData(Byte.parseByte(getRandomNumber(14) + ""));
@@ -101,10 +112,12 @@ public class RidingListener implements Listener
                         public void run()
                         {
                             b.setType(prev);
+                            left.setType(prev2);
+                            right.setType(prev3);
                         }
                     }.runTaskLater(plugin, 40L);
                 }
-            }.runTaskTimer(plugin, 0L, 5L);
+            }.runTaskTimer(plugin, 0L, 4L);
 
 
         }
