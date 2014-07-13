@@ -67,17 +67,17 @@
 				</configuration>
 			</plugin>
 
-            <!-- **TEMPORARY** -->
+            <!-- **TEMPORARY** --> <!-- temporary my ass -->
             <!-- Place jar in server plugins dir -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.3.2</version>
-                <configuration>
+                <!-- <configuration>
                     <outputDirectory>
                         C:/Users/Mike/Desktop/Minecraft/Local Server/plugins
                     </outputDirectory>
-                </configuration>
+                </configuration> -->
             </plugin>
 
 		</plugins>
